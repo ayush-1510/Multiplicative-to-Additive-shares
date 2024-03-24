@@ -32,7 +32,7 @@ void bn_rand(bignum256 *x, bignum256 *nf)
     bn_mod(&x, &secp256k1.prime);
 }
 
-void bn_negate()
+void bn_negate(curve_point *pt1, curve_point *2, )
 {
 
 }
