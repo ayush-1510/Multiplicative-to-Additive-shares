@@ -5,7 +5,7 @@ static const bignum256 p_ka;
 //generate a
 void gen_a()
 {
-    bn_rand(&a, &secp256k1.prime); //yet
+    bn_rand(&a, &secp256k1.prime); 
 }
 
 //get a
@@ -54,7 +54,7 @@ void get_encrypted_messages(int i, bignum256 *enc_m)
     point_multiply(&secp256k1, &p_ka, &pub_kb, &key0);
     bn_multiply(&key0.x, &key0.y, &secp256k1.prime);
     bn_mod(&key0.y, &secp256k1.prime);
-    get_hash(&key0.y, &k0); // yet
+    get_hash(&key0.y, &k0); 
 
     //k1=hash(p_ka*(pub_kb-pub_a))
     curve_point temp;
