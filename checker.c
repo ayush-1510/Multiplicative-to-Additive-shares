@@ -32,6 +32,8 @@ void validate()
     bn_multiply(&b, &r_lhs, &secp256k1.prime);
     bn_mod(&r_rhs, &secp256k1.prime);
 
+    compute_dec2pow();
+
     //compare lhs and rhs
     print(bn_is_equal(&r_rhs, &r_lhs));
 }

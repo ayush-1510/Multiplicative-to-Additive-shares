@@ -9,6 +9,7 @@
 #include "hasher.h"
 
 #define LEN 256
+#define DLEN 78
 extern curve_point pub_ka;
 extern curve_point pub_kb;
 
