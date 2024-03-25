@@ -89,4 +89,3 @@ void calculate_c()
     bn_zero(&temp);
     bn_subtract(&temp, &c_, &c_);
 }
-
