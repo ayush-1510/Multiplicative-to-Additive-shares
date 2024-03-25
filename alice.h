@@ -1,9 +1,5 @@
 #include "cypherock.h"
 
-bignum256 a;
-bignum256 c[LEN];
-bignum256 c_ = {0};
-
 void gen_a();
 void get_a();
 void alice_p_ka();

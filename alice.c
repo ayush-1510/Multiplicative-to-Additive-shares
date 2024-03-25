@@ -1,5 +1,9 @@
 #include "alice.h"
 
+bignum256 a;
+bignum256 c[LEN];
+bignum256 c_ = {0};
+
 static const bignum256 p_ka;
 
 //generate a
@@ -25,7 +29,6 @@ void alice_p_ka()
 //get alice public key
 void alice_pub_ka()
 {
-    //chod?
     point_multiply(&secp256k1, &p_ka, &secp256k1.G, &pub_ka);
 }
 
@@ -35,11 +38,11 @@ void get_encrypted_messages(int i, bignum256 *enc_m)
 
     //declare the messages m0 and m1
     bignum256 m0, m1;
-    bn_copy(&m0, &m1);
 
     //m0=random number c[idx]
     bn_rand(&m0, &secp256k1.prime);
     bn_copy(&m0, &c[i]);
+    bn_copy(&m0, &m1);
 
     //m1=m0+a
     bn_add(&m1, &a);
@@ -58,7 +61,7 @@ void get_encrypted_messages(int i, bignum256 *enc_m)
 
     //k1=hash(p_ka*(pub_kb-pub_a))
     curve_point temp;
-    bn_negate(&pub_kb, &pub_ka, &temp); //yet
+    point_subt(&pub_kb, &pub_ka, &temp);
     point_multiply(&secp256k1, &p_ka, &temp, &key1);
     bn_multiply(&key1.x, &key1.y, &secp256k1.prime);
     bn_mod(&key1.y, &secp256k1.prime);
@@ -82,5 +85,8 @@ void calculate_c()
         bn_add(&c_, &c[i]);
     }
 
-    bn_negate(&c_, &secp256k1.prime);
+    bignum256 temp;
+    bn_zero(&temp);
+    bn_subtract(&temp, &c_, &c_);
 }
+

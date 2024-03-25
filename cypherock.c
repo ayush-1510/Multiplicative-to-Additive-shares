@@ -1,5 +1,8 @@
 #include "cypherock.h"
 
+curve_point pub_ka;
+curve_point pub_kb;
+
 void get_hash(bignum256 *x, bignum256 *res)
 {
     //convert bignum256 to uint8_t
@@ -32,7 +35,14 @@ void bn_rand(bignum256 *x, bignum256 *nf)
     bn_mod(&x, &secp256k1.prime);
 }
 
-void bn_negate(curve_point *pt1, curve_point *2, )
+void point_subt(curve_point *pt1, curve_point *pt2, curve_point *res)
 {
+    //res=pt1-pt2;
+    curve_point temp;
+    bn_subtract(&secp256k1.prime, &pt2->y, &temp.y);
+    bn_copy(&pt2->x, &temp.x);
 
+    point_add(&secp256k1, &pt1, &temp);
+    bn_copy(&temp.x, &res->x);
+    bn_copy(&temp.y, &res->y);
 }

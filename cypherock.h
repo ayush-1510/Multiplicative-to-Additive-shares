@@ -6,7 +6,10 @@
 #include "hasher.h"
 
 #define LEN 256
-curve_point pub_ka;
-curve_point pub_kb;
+extern curve_point pub_ka;
+extern curve_point pub_kb;
+extern int mode;
 
 void get_hash(bignum256 *x, bignum256 *res);
+void bn_rand(bignum256 *x, bignum256 *nf);
+void point_subt(curve_point *pt1, curve_point *pt2, curve_point *res);
