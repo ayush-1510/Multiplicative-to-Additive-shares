@@ -11,7 +11,6 @@
 #define LEN 256
 extern curve_point pub_ka;
 extern curve_point pub_kb;
-extern int mode;
 
 void get_hash(bignum256 *x, bignum256 *res);
 void bn_rand(bignum256 *x, bignum256 *nf);
