@@ -1,6 +1,9 @@
 #include "bob.h"
 
-static const bignum256 p_kb;
+bignum256 b;
+bignum256 d[LEN];
+bignum256 d_ = {0};
+static bignum256 p_kb;
 
 //generate b
 void gen_b()

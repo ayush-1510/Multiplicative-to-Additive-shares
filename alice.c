@@ -4,7 +4,7 @@ bignum256 a;
 bignum256 c[LEN];
 bignum256 c_ = {0};
 
-static const bignum256 p_ka;
+static bignum256 p_ka;
 
 //generate a
 void gen_a()

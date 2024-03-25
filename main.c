@@ -33,4 +33,6 @@ int main()
     }
 
     calculate_c();
+    calculate_d();
+    validate();
 }
