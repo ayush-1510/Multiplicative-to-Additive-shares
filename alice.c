@@ -9,7 +9,7 @@ static bignum256 p_ka;
 //generate a
 void gen_a()
 {
-    bn_rand(&a, &secp256k1.prime); 
+    bn_rand(&a, &secp256k1.prime);
 }
 
 //get a

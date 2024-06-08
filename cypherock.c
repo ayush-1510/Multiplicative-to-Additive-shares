@@ -20,7 +20,7 @@ void get_hash(bignum256 *x, bignum256 *res)
     bn_read_le(&out, &res);
 }
 
-void bn_rand(bignum256 *x, bignum256 *nf)
+void bn_rand(bignum256 *x, const bignum256 *nf)
 {
     uint8_t arr[LEN/8];
     int temp;
@@ -35,7 +35,7 @@ void bn_rand(bignum256 *x, bignum256 *nf)
         arr[i] = ((temp >> (i % 4)) * 8) & 0xff;
     }
     bn_read_le(&arr, &x);
-    bn_mod(&x, &secp256k1.prime);
+    bn_mod(x, nf);
 }
 
 void point_subt(curve_point *pt1, curve_point *pt2, curve_point *res)
